@@ -3,10 +3,12 @@ package org.example;
 public class App {
 
     public static void main(String[] args) {
-        int largura = Integer.parseInt(args[0]);
-        int altura = Integer.parseInt(args[1]);
-        System.out.println(quadrado(largura,altura));
-        //System.out.println(triangulo(altura));
+
+        String tipo = args[0];
+        //int argint1 = Integer.parseInt(args[0]);
+        int argint2 = Integer.parseInt(args[1]);
+        //System.out.println(quadrado(largura,altura));
+        System.out.println(losango(argint2));
 
     }
 
@@ -31,5 +33,25 @@ public class App {
         return triangulo;
     }
 
+    private static StringBuilder losango(int altura){
+        char asterisco = '*';
+        int meioup = Math.ceilDiv(altura,2) ;
+        int meiodown = Math.floorDiv(altura,2) ;
+        StringBuilder losango = new StringBuilder();
+        StringBuilder textotemp = new StringBuilder();
+        textotemp.append(" ".repeat(altura-meioup)).append(asterisco).append(" ".repeat(altura-meioup)).append("\n");
 
+        for (int linhasdown = altura,linhasup= 0 ; linhasdown >= 0; linhasdown--,linhasup++ ){
+            if(linhasdown != linhasup && linhasdown > linhasup){
+                textotemp.setCharAt(meiodown-linhasup,asterisco);
+                textotemp.setCharAt(meiodown+linhasup,asterisco);
+            }
+            else {
+                textotemp.setCharAt(meiodown-linhasdown,' ');
+                textotemp.setCharAt(meiodown+linhasdown,' ');
+            }
+            losango.append(textotemp);
+        }
+        return losango;
+    }
 }
