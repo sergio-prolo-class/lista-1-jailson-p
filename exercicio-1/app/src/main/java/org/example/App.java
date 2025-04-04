@@ -2,13 +2,25 @@ package org.example;
 
 public class App {
 
+    private static final String TRIANGULO   = "triangulo";
+    private static final String LOSANGO     = "losango";
+    private static final String QUADRADO    = "quadrado";
+
     public static void main(String[] args) {
 
-        String tipo = args[0];
-        //int argint1 = Integer.parseInt(args[0]);
-        int argint2 = Integer.parseInt(args[1]);
-        //System.out.println(quadrado(largura,altura));
-        System.out.println(losango(argint2));
+        switch (option(args)){
+            case 'T':
+                System.out.println(triangulo(Integer.parseInt(args[1])));
+                break;
+            case 'L':
+                System.out.println(losango(Integer.parseInt(args[1])));
+                break;
+            case 'Q':
+                System.out.println(quadrado(Integer.parseInt(args[1]),Integer.parseInt(args[2])));
+                break;
+            default:
+                System.out.println("Argumentos incorretos!");
+        }
 
     }
 
@@ -53,5 +65,21 @@ public class App {
             losango.append(textotemp);
         }
         return losango;
+    }
+
+    private static char option(String[] arg){
+        if      (arg[0].equals(TRIANGULO) && arg.length == 2 && validaNumString(arg[1]))                            return 'T';
+        else if (arg[0].equals(LOSANGO)   && arg.length == 2 && validaNumString(arg[1]))                            return 'L';
+        else if (arg[0].equals(QUADRADO)  && arg.length == 3 && validaNumString(arg[1]) && validaNumString(arg[2])) return 'Q';
+        return 'Z';
+    }
+
+    private static boolean validaNumString(String str){
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
