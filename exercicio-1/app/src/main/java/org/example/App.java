@@ -10,13 +10,13 @@ public class App {
 
         switch (option(args)){
             case 'T':
-                System.out.println(triangulo(Integer.parseInt(args[1])));
+                System.out.print(triangulo(Integer.parseInt(args[1])));
                 break;
             case 'L':
-                System.out.println(losango(Integer.parseInt(args[1])));
+                System.out.print(losango(Integer.parseInt(args[1])));
                 break;
             case 'Q':
-                System.out.println(quadrado(Integer.parseInt(args[1]),Integer.parseInt(args[2])));
+                System.out.print(quadrado(Integer.parseInt(args[1]),Integer.parseInt(args[2])));
                 break;
             default:
                 System.out.println("Argumentos incorretos!");
@@ -39,7 +39,7 @@ public class App {
 
     private static StringBuilder triangulo(int altura){
         StringBuilder triangulo = new StringBuilder();
-        for (int spaces = altura; spaces >= 0; spaces-- ){
+        for (int spaces = altura-1; spaces >= 0; spaces-- ){
             triangulo.append(" ".repeat(spaces)).append("*".repeat(altura - spaces)).append("\n");
         }
         return triangulo;
@@ -54,6 +54,7 @@ public class App {
         textotemp.append(" ".repeat(altura-meioup)).append(asterisco).append(" ".repeat(altura-meioup)).append("\n");
 
         for (int linhasdown = altura,linhasup= 0 ; linhasdown >= 0; linhasdown--,linhasup++ ){
+            if(linhasup == altura) continue;
             if(linhasdown != linhasup && linhasdown > linhasup){
                 textotemp.setCharAt(meiodown-linhasup,asterisco);
                 textotemp.setCharAt(meiodown+linhasup,asterisco);
