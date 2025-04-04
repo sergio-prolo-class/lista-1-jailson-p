@@ -30,7 +30,7 @@ public class App {
             if (linhas == altura || linhas == 1){
                 quadrado.append("*".repeat(largura));
             }else {
-                quadrado.append("*").append(" ".repeat(largura - 2)).append("*");
+                quadrado.append("*").append("\s".repeat(largura - 2)).append("*");
             }
             quadrado.append("\n");
         }
@@ -40,7 +40,7 @@ public class App {
     private static StringBuilder triangulo(int altura){
         StringBuilder triangulo = new StringBuilder();
         for (int spaces = altura-1; spaces >= 0; spaces-- ){
-            triangulo.append(" ".repeat(spaces)).append("*".repeat(altura - spaces)).append("\n");
+            triangulo.append("\s".repeat(spaces)).append("*".repeat(altura - spaces)).append("\n");
         }
         return triangulo;
     }
@@ -55,26 +55,28 @@ public class App {
 
         for (int linhasdown = altura,linhasup= 0 ; linhasdown >= 0; linhasdown--,linhasup++ ){
             if(linhasup == altura) continue;
-            if(linhasdown != linhasup && linhasdown > linhasup){
+            if(linhasdown > linhasup){
                 textotemp.setCharAt(meiodown-linhasup,asterisco);
                 textotemp.setCharAt(meiodown+linhasup,asterisco);
             }
             else {
-                textotemp.setCharAt(meiodown-linhasdown,' ');
-                textotemp.setCharAt(meiodown+linhasdown,' ');
+                textotemp.setCharAt(meiodown-linhasdown,'\s');
+                textotemp.setCharAt(meiodown+linhasdown,'\s');
             }
             losango.append(textotemp);
         }
         return losango;
     }
 
+    //Compara as opções e chama a validação para entregar a opção correspondente
     private static char option(String[] arg){
         if      (arg[0].equals(TRIANGULO) && arg.length == 2 && validaNumString(arg[1]))                            return 'T';
         else if (arg[0].equals(LOSANGO)   && arg.length == 2 && validaNumString(arg[1]))                            return 'L';
         else if (arg[0].equals(QUADRADO)  && arg.length == 3 && validaNumString(arg[1]) && validaNumString(arg[2])) return 'Q';
-        return 'Z';
+        return '0';
     }
 
+    //Valida as possíveis ocorrências de argumentos
     private static boolean validaNumString(String str){
         try {
             Integer.parseInt(str);
