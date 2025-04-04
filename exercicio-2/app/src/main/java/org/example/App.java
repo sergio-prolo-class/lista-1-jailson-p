@@ -18,8 +18,31 @@ public class App {
 
     public static void main(String[] args) {
 
-
+        System.out.println(dezenas(args));;
 
     }
+
+    public static String dezenas(String[] argumento){
+        String dezena = new String();
+        for (int i = 0; i < argumento.length; i++){
+            if(i <  2){
+                if      (argumento[i].equalsIgnoreCase(PRETO[0]))   {dezena += PRETO[1];      continue;}
+                else if (argumento[i].equalsIgnoreCase(MARROM[0]))  {dezena += MARROM[1];     continue;}
+                else if (argumento[i].equalsIgnoreCase(VERMELHO[0])){dezena += VERMELHO[1];   continue;}
+                else if (argumento[i].equalsIgnoreCase(LARANJA[0])) {dezena += LARANJA[1];    continue;}
+                else if (argumento[i].equalsIgnoreCase(AMARELO[0])) {dezena += AMARELO[1];    continue;}
+                else if (argumento[i].equalsIgnoreCase(VERDE[0]))   {dezena += VERDE[1];      continue;}
+                else if (argumento[i].equalsIgnoreCase(AZUL[0]))    {dezena += AZUL[1];       continue;}
+                else if (argumento[i].equalsIgnoreCase(VIOLETA[0])) {dezena += VIOLETA[1];    continue;}
+                else if (argumento[i].equalsIgnoreCase(CINZA[0]))   {dezena += CINZA[1];      continue;}
+                else if (argumento[i].equalsIgnoreCase(BRANCO[0]))  {dezena += BRANCO[1];     }
+
+            }
+
+        }
+
+       return dezena;
+    }
+
 
 }
