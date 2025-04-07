@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Mapa {
 
-    private char[][] mapa;
+    private Character[][] mapa;
     private char caracter;
 
     public Mapa(int linhas, int colunas,char caracter) {
@@ -14,8 +14,8 @@ public class Mapa {
         this.caracter = caracter;
     }
 
-    public static char[][] preenchermapachar(int linhas, int colunas, char caract){
-        char[][] mapapreenchidoCaract =new char[linhas][colunas];
+    public static Character[][] preenchermapachar(int linhas, int colunas, char caract){
+        Character[][] mapapreenchidoCaract =new Character[linhas][colunas];
         for (int i = 0; i < linhas; i++){
             for(int j =0; j < colunas; j++){
                 mapapreenchidoCaract[i][j] = caract;
